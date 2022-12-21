@@ -1,0 +1,221 @@
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slogan {
+  from {
+    opacity: 0;
+    letter-spacing: 0.13em;
+    top: 0.12em;
+  }
+  to {
+    opacity: 1;
+    letter-spacing: 0.015em;
+    top: 1.45em;
+  }
+}
+
+header {
+  //clip-path: polygon(0% 0%, 100% 0%, 95% 100%, 5% 100%);
+  //background: url("../../img/galaxy2.png") no-repeat 50% 100%, $secondary;
+  //background-size: auto 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  -moz-box-shadow: 0px 5px 15px 1px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0px 5px 15px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 5px 15px 1px rgba(0, 0, 0, 0.03);
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  .navbar {
+    padding-top: calc((var(--bs-gutter-x) * 0.25) + 3px - 3.515px) !important;
+    padding-left: calc((var(--bs-gutter-x) * 0.5) + 3px) !important;
+    padding-right: calc((var(--bs-gutter-x) * 0.5)) !important;
+    padding-bottom: calc(
+      (var(--bs-gutter-x) * 0.25) + 3px - 3.515px
+    ) !important;
+
+    .circleCenter {
+      @include on-circle($item-count: 6, $circle-size: 40vh, $item-size: 6em);
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    #logo {
+      position: relative;
+      $delay: 0s;
+      font-size: 35px;
+      width: 249.92px;
+
+      strong {
+        color: $primary;
+        font-family: amarillo-regular;
+        font-style: normal;
+        font-size: 1em;
+        height: 1.667em;
+        line-height: 1.895em;
+        margin: 0 -0.08em 0 0;
+        z-index: 2;
+        position: relative;
+        font-weight: bold;
+
+        span {
+          opacity: 0;
+        }
+
+        @for $i from 1 through 3 {
+          span:nth-child(#{$i}) {
+            animation: show 0.5s forwards;
+            animation-delay: $delay;
+            display: inline-block;
+          }
+
+          $delay: $delay + calc($animDelay / 3);
+        }
+
+        span:last-child {
+          position: absolute;
+          text-transform: uppercase;
+          font-size: 0.358em;
+          color: $secondary;
+          font-family: Vazir Bold FD;
+          right: 0.42em;
+          top: 1.45em;
+          @include text-shadow;
+          animation: slogan calc($delay / 3) ease-in-out forwards;
+          animation-delay: $delay;
+        }
+      }
+
+      a {
+        display: block;
+        height: 1.8013em;
+        width: 1.778em;
+
+        &::after {
+          content: "";
+          transform: translate3d(5rem, 0rem, 0) skewX(27deg) skewY(0deg);
+          width: 2.5rem;
+          height: 0rem;
+          //height: 10rem;
+          background: linear-gradient(
+            rgba(255, 255, 255, 0.5),
+            rgba(255, 255, 255, 0.3)
+          );
+          border-radius: 100%;
+          filter: blur(0.5rem);
+          display: block;
+        }
+
+        svg {
+          opacity: 0;
+          animation: slogan calc($delay/2) ease-in-out forwards;
+          animation-delay: $delay;
+          height: 100%;
+          width: 100%;
+
+          .outline {
+            fill: $secondary;
+          }
+          .background {
+            fill: #0f2f98;
+          }
+          .weather {
+            fill: #fff;
+          }
+          .dev-icon,
+          .center-icon {
+            fill: none;
+            stroke: #fff;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 0.575em;
+          }
+        }
+      }
+
+      @keyframes scale3D {
+        0% {
+          transform: scale3d(1, 1, 100%);
+        }
+
+        50% {
+        }
+
+        100% {
+          transform: scale3d(1, 0.2, 100%);
+          opacity: 1;
+          top: -150px;
+        }
+      }
+    }
+
+    &__item {
+      font-size: 1.2em;
+      margin-left: 1em;
+
+      @include text-shadow;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      & a {
+        color: $secondary;
+        position: relative;
+        transition: all 0.75s;
+        background: -webkit-linear-gradient(
+          0deg,
+          $secondary 0%,
+          $tertiary 100%
+        );
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        &.active {
+          &::after {
+            position: absolute;
+            content: "";
+            bottom: -10px;
+            left: 25%;
+            width: 50%;
+            border-bottom: 2px solid $tertiary;
+          }
+        }
+
+        &:hover {
+          &::after {
+            position: absolute;
+            content: "";
+            bottom: -10px;
+            left: 25%;
+            width: 50%;
+            border-bottom: 2px solid $tertiary;
+          }
+        }
+      }
+    }
+
+    &__coach {
+      font-size: 0.65em;
+      position: relative;
+
+      img {
+        position: absolute;
+        top: calc(100% + 47px);
+        right: 0;
+      }
+    }
+  }
+}

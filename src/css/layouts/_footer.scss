@@ -1,0 +1,20 @@
+footer {
+  height: 80px;
+  position: fixed;
+  bottom: 49px;
+  left: 0;
+  right: 0;
+  svg {
+    height: inherit;
+    margin-right: 1em;
+    .cls-1 {
+      fill: $secondary;
+    }
+  }
+
+  span {
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    padding-top: 0.4em;
+  }
+}

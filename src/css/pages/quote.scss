@@ -1,0 +1,115 @@
+@import "../utils/mixins";
+@import "../utils/variables";
+@import "../components/tooltip.scss";
+
+.quote {
+  max-width: 777px;
+
+  p {
+    b {
+      font-size: 0.8em;
+      padding: 0 0.2em;
+    }
+  }
+
+  #pressEnter {
+    position: absolute;
+    top: calc(50% - 43px);
+    right: -150px;
+    text-align: center;
+    color: white;
+    opacity: 0;
+
+    svg {
+      width: 50px;
+
+      path {
+        fill: none;
+        stroke: #ffffff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 11.2px;
+      }
+    }
+  }
+
+  .subTitle {
+    display: block;
+    text-align: center;
+    margin-bottom: 0.7em !important;
+    font-size: 1.05em;
+  }
+
+  &__Quiz {
+    & > div {
+      padding: 2em;
+      width: 640px;
+
+      section {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        justify-content: space-between;
+
+        & > div:nth-child(1) {
+          flex: 0 1 calc(70%);
+        }
+
+        & > div:nth-child(2) {
+          flex: 0 1 auto;
+          margin-left: 2em;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .subTitle {
+          text-align: left;
+          text-shadow: 1px 1px 1px white;
+        }
+
+        button {
+          position: relative;
+          padding: 0.5em 1em;
+        }
+
+        button:not(:last-of-type) {
+          margin-right: 1em;
+        }
+
+        textarea {
+          width: 100%;
+        }
+      }
+    }
+
+    &__Steps {
+      text-align: right;
+      span {
+        padding: 0.4em;
+        font-size: 1.1em;
+        @include text-shadow-dark;
+        &.current {
+          border-bottom: 2px solid $tertiary;
+        }
+        &:not(.current) {
+          color: rgb(94, 94, 94);
+        }
+        &:not(last-of-type) {
+          margin-right: 0.5em;
+        }
+      }
+    }
+
+    &__Previous {
+      &.disabled {
+        display: none;
+      }
+      width: 50px !important;
+      height: auto;
+      color: $primary;
+      cursor: pointer;
+      margin: 1em auto 0 auto;
+      display: block;
+    }
+  }
+}
